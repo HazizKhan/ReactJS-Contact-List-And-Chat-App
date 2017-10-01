@@ -48,6 +48,15 @@ class Login extends Component {
   }
 
   styles = {
+    root: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'space-around',
+      position: 'relative',
+      marginTop: '50px'
+
+    },
+
     textFields: {
       width: '100%'
     }
@@ -55,46 +64,37 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="Login">
-        <GridList
-          cols={3}
-          cellHeight='auto'
-          padding={1}
-        >
+      <div className="Login" style={this.styles.root}>
 
-          <GridTile></GridTile>
-          <GridTile>
-            <Card>
-              <CardTitle title="Login" subtitle="Please Login to continue" />
-              <CardText>
-                <TextField
-                  hintText="Enter Your Email"
-                  floatingLabelText="Email"
-                  type='email'
-                  style={this.styles.textFields}
-                  onChange={(event, newValue) => {
-                    this.onChange(event, newValue, 'email');
-                  }}
-                />
-                <TextField
-                  hintText="Enter Your Password"
-                  floatingLabelText="Password"
-                  type='password'
-                  style={this.styles.textFields}
-                  onChange={(event, newValue) => {
-                    this.onChange(event, newValue, 'password');
-                  }}
+        <Card>
+          <CardTitle title="Login" subtitle="Please Login to continue" />
+          <CardText>
+            <TextField
+              hintText="Enter Your Email"
+              floatingLabelText="Email"
+              type='email'
+              style={this.styles.textFields}
+              onChange={(event, newValue) => {
+                this.onChange(event, newValue, 'email');
+              }}
+            />
+            <TextField
+              hintText="Enter Your Password"
+              floatingLabelText="Password"
+              type='password'
+              style={this.styles.textFields}
+              onChange={(event, newValue) => {
+                this.onChange(event, newValue, 'password');
+              }}
 
-                />
-                <div className="text-right full-width">
-                  <RaisedButton label='Login' primary={true} onClick={this.authenticate.bind(this)} />
-                </div>
-              </CardText>
+            />
+            <div className="text-right full-width">
+              <RaisedButton label='Login' primary={true} onClick={this.authenticate.bind(this)} />
+            </div>
+          </CardText>
 
-            </Card>
-          </GridTile>
-          <GridTile></GridTile>
-        </GridList>
+        </Card>
+
       </div>
     );
   }

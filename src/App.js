@@ -24,7 +24,7 @@ class App extends Component {
           <Route exact path='/' component={Login} />
           <Route path='/login' component={Login} />
           <Route path='/Signup' component={Signup} />
-          <Route path="/home" component={AuthGuard}></Route>
+          <Route path="/" component={AuthGuard}></Route>
         </div >
       </MuiThemeProvider >
     );

@@ -44,52 +44,50 @@ class Signup extends Component {
   }
 
   styles = {
+    root: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'space-around',
+      position: 'relative',
+      marginTop: '50px'
+    },
     textFields: {
       width: '100%'
     }
   }
   render() {
     return (
-      <div className="Signup">
-        <GridList
-          cols={3}
-          cellHeight='auto'
-          padding={1}
-        >
+      <div className="Signup" style={this.styles.root}>
 
-          <GridTile></GridTile>
-          <GridTile>
-            <Card>
-              <CardTitle title="Signup" subtitle="Please Create Account" />
-              <CardText>
-                <TextField
-                  hintText="Enter Your Email"
-                  floatingLabelText="Email"
-                  type='email'
-                  style={this.styles.textFields}
-                  onChange={(event, newValue) => {
-                    this.onChange(event, newValue, 'email');
-                  }}
-                />
-                <TextField
-                  hintText="Enter Your Password"
-                  floatingLabelText="Password"
-                  type='password'
-                  style={this.styles.textFields}
-                  onChange={(event, newValue) => {
-                    this.onChange(event, newValue, 'password');
-                  }}
+        <Card>
+          <CardTitle title="Signup" subtitle="Please Create Account" />
+          <CardText>
+            <TextField
+              hintText="Enter Your Email"
+              floatingLabelText="Email"
+              type='email'
+              style={this.styles.textFields}
+              onChange={(event, newValue) => {
+                this.onChange(event, newValue, 'email');
+              }}
+            />
+            <TextField
+              hintText="Enter Your Password"
+              floatingLabelText="Password"
+              type='password'
+              style={this.styles.textFields}
+              onChange={(event, newValue) => {
+                this.onChange(event, newValue, 'password');
+              }}
 
-                />
-                <div className="text-right full-width">
-                  <RaisedButton label="Signup" primary={true} onClick={this.signup.bind(this)} />
-                </div>
-              </CardText>
+            />
+            <div className="text-right full-width">
+              <RaisedButton label="Signup" primary={true} onClick={this.signup.bind(this)} />
+            </div>
+          </CardText>
 
-            </Card>
-          </GridTile>
-          <GridTile></GridTile>
-        </GridList>
+        </Card>
+
       </div>
     );
   }

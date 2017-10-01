@@ -5,6 +5,7 @@ import * as firebase from 'firebase';
 import Home from './Home'
 import { connect } from 'react-redux';
 import AuthMiddleware from './../store/middleware/AuthMiddleware'
+import AddMobile from './../components/AddMobile'
 function mapStateToProps(state) {
   return {
     authState: state.AuthReducer,
@@ -25,11 +26,19 @@ class AuthGuard extends Component {
   }
   componentWillReceiveProps(nextProps) {
     setTimeout(() => {
+      if (this.props.authState.isError) {
+        this.props.history.push('/')
+      }
 
     })
   }
   renderAuthRoutes() {
-    if (this.props.authState.isAuthenticated) {
+    if (this.props.authState.isNewUser) {
+      return (
+        <AddMobile />
+      )
+    }
+    else if (this.props.authState.isAuthenticated) {
       return (
         <Route path='/' component={Home}></Route>
       )
@@ -38,14 +47,12 @@ class AuthGuard extends Component {
   }
   componentWillMount() {
     this.props.authenticate();
-    if (this.props.authState.isError) {
-      this.props.history.push('/')
-    }
+
   }
   render() {
     return (
       <div className="AuthGuard">
-        {this.renderAuthRoutes()}
+        {this.props.authState ? this.renderAuthRoutes() : null}
       </div>
     );
   }
